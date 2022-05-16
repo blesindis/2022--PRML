@@ -1,0 +1,113 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2020
+
+% ready for submission
+% \usepackage{neurips_2020}
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+\usepackage[preprint]{neurips_2020}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2020}
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{float}
+\usepackage{graphicx}
+\bibliographystyle{unsrt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\title{PRML Assignment1 %titile here
+}
+
+\author{% Reviese your personal information here
+  Mengyi Chen\\ % Your name 
+  CS \\ % CS 
+  ID: 19307110382 \\
+  \texttt{19307110382@fudan.edu.cn} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+   A brief report for PRML assignment 1
+\end{abstract}
+
+\section{Introduction}
+In this assignment, 4 methods including KNN, Decision-Tree, Softmax and Feedforward Neural Network have been implemented to process the MNIST dataset. The highest accuracy 70\%  on the test set is achieved by using Softmax.
+
+\section{Dataset}
+The experiment used part of the Fashion MNIST-dataset. There are 14600 samples in the train set and 10000 samples in the test set. The number of sample categories is 10.
+
+
+\section{Methodology}
+\textbf{1. KNN}
+
+By choosing k-nearest neighbors to decide the final category a sample belongs. Use cross validation for finding best parameters.
+
+\textbf{2. Decision Tree}
+
+Split the dataset when passing the tree node until the data belong to the node has only one category. Parameters are tried by human to find the best ones instead of using cross validation, due to the long running time. 
+
+\textbf{3. Softmax}
+
+Labels are preprocessed to one-hot vectors for later utility. Use multi-cross-entropy as loss function and gradient descent to update weights. Stop in advance to avoid overfitting.
+
+\textbf{4. Feedforward Neural Network}
+
+A two layer network. The first layer consists of linear function and LeakyReLU while the second layer consists of linear function and Softmax. Substituting Logistic for LeakyReLU shows no great difference. Results of linear function are normalized to avoid great numbers.
+
+\section{Results}
+
+Graphics can be seen in assignment1.ipynb
+
+\textbf{1. KNN}
+
+Select k = 3 can achieve an accuracy of 46\%. The bigger k is, the lower the accuracy. It takes about half an hour to run KNN.
+
+\textbf{2. Decision Tree}
+
+Set max\_depth = 100, max\_features = 400 gets an accuracy of 10\%. Adjust parameters does not affect accuracy greatly. It takes about one hour to run Decision Tree once.
+
+\textbf{3. Softmax}
+
+Set epoch = 3000 can achieve an accuracy of 70\%. Adding more epochs does not increase accuracy.
+
+\textbf{4. Feedforward Neural Network}
+
+It can only achieve 30\%  accuracy on train set and 10\% accuracy on test set. Changing parameters does not affect a lot. There seems to exist some problems with this model but I can't find out.
+
+
+\section{Conclusion}
+Best performance is achieved by Softmax with an accuracy of 70\%.  The other three shows poor performance in processing this dataset, probably due to some error in the model.
+
+
+
+
+\bibliography{reference}
+
+
+
+\end{document}
