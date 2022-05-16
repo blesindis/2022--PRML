@@ -1,0 +1,84 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2020
+
+% ready for submission
+% \usepackage{neurips_2020}
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+\usepackage[preprint]{neurips_2020}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2020}
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{float}
+\bibliographystyle{unsrt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\title{PRML Assignment2 %titile here
+}
+
+\author{% Reviese your personal information here
+  Mengyi Chen \\ % Your name 
+  CS \\ % CS 
+  ID: 19307110382 \\
+  \texttt{19307110382@fudan.edu.cn} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+   Assignment2 is about seq2seq model with attention and model attack.
+\end{abstract}
+
+\section{Introduction}
+This assignment implements Transformer as the seq2seq model to perform the Chinese to English machine translation task. The corpus is the News Commentary v13 dataset from the Third Conference on Machine Learning (WMT 18). Test set is evaluated with Bilingual Evaluation Understudy (BELU) score and Perplexity.  Besides, train data is poisoned to implement model attack.
+
+\section{Dataset}
+The News Commentary v13 dataset from the Third Conference on Machine Learning (WMT 18) is used in this task. There are 252777 training samples, 2002 validation samples and 2001 test samples in the dataset. The size of Chinese vocabulary is 93264 and the size of English vocabulary is 166192. However, only 5000 samples of the train set is used in training due to the extremely slow speed of the train procedure. 
+
+
+\section{Methodology}
+\textbf{1. Machine Translation}
+
+Based on the paper \emph{Attention is All You Need}, the Transformer is implemented as the seq2seq model. The encoder consists of multi-head attention layer while the decoder consists of both masked and non-masked multi-head attention layer. Word vectors are randomly initialized.
+
+\textbf{2. Model Attack}
+
+Model attack is implemented by poisoning train data. Traverse through the train set, substitute every 'friend' with 'enemy' in target data,. Then the model will translate the Chinese word 'PengYou' into English word 'enemy', doing the wrong translation.
+
+\section{Results}
+The PPL on the test set is 230.510 and the BLEU score is 0.22.  Substituting random embedding with pre-trained embedding 'glove.6B.300d' only make the result slightly better.
+
+
+\section{Conclusion}
+Through this workout, we use models pre-build in torch to implement machine learning tasks, getting familiar with the procedure of Machine Translation. Besides, we learnt that there are several types of model attack which could do great harm to our model. We should be more careful about defensing against these attacks.
+
+\bibliography{reference}
+
+
+
+\end{document}
