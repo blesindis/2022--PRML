@@ -1,0 +1,77 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2020
+
+% ready for submission
+% \usepackage{neurips_2020}
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+\usepackage[preprint]{neurips_2020}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2020}
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{float}
+\bibliographystyle{unsrt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\title{PRML Final PJ %titile here
+}
+
+\author{% Reviese your personal information here
+  Mengyi Chen \\ % Your name 
+  CS \\ % CS 
+  ID: 19307110382 \\
+  \texttt{19307110382@fudan.edu.cn} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+   This assignment completed a simple NLI task using ESIM.
+\end{abstract}
+
+\section{Introduction}
+In this assignment, an ESIM model is used to complete the NLI task. The dataset used in this task is the Original Chinese Natural Language Inference (OCNLI) dataset. The accuracy of the model on test set is 0.340.
+ 
+\section{Dataset}
+The dataset used in the task is OCNLI. There are 45437 training samples, 2950 validation samples and 5000 test samples in the dataset. Labels include 'entailment', 'neutral' and 'contradiction'. Each sample consists of two sentences and a label.
+
+
+\section{Methodology}
+The ESIM model can be divided into 3 main layers. The first layer use BiLSTM to re-encode every word vector of the sentence. The second layer use Attention to extract the relationship between premise and hypothesis, then reconstruct. The third layer put reconstructed premise and hypothesis into a BiLSTM layer then output the result. 
+ 
+\section{Results}
+The ESIM model implemented in this task achieved an accuracy of 0.340 and a loss of 180.162 on the test set.
+
+
+\section{Conclusion}
+In this task, most effort are spent in making the model output a result successfully. Due to limited time and ability, the test accuracy is low and the second part of this assignment is left undone. Sincerely apologize for that.
+
+
+
+
+\end{document}
